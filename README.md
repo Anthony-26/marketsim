@@ -4,8 +4,8 @@ API d’investissement fictive permettant de simuler la gestion d’un portefeui
 
 ## 🚀 Stack technique
 
-- Java 17+
-- Spring Boot 3.4.5 (REST API, JPA, Validation)
+- Java 21+
+- Spring Boot 3.4.6 (REST API, JPA, Validation)
 - PostgreSQL (dev/prod), H2 (test)
 - Flyway (migrations BDD)
 - Lombok (réduction du boilerplate)
