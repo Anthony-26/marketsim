@@ -1,18 +1,20 @@
-package fr.marketsim.infrastructure.out.entity.user;
+package fr.marketsim.infrastructure.out.database.entity.user;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.util.UUID;
 
-import static fr.marketsim.application.util.ApplicationConstants.PRICE_PRECISION;
-import static fr.marketsim.application.util.ApplicationConstants.PRICE_SCALE;
+import static fr.marketsim.application.utilities.ApplicationConstants.PRICE_PRECISION;
+import static fr.marketsim.application.utilities.ApplicationConstants.PRICE_SCALE;
 
 @Entity
 @Table(name = "accounts")
+@Getter
+@Builder(access = AccessLevel.PUBLIC)
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class AccountEntity {
 
     @Id
@@ -29,11 +31,5 @@ public class AccountEntity {
     @OneToOne
     @JoinColumn(name = "user_id", nullable = false)
     private UserEntity user;
-
-    @PrePersist
-    private void onCreate() {
-        if (this.publicId == null)
-            this.publicId = UUID.randomUUID();
-    }
 
 }

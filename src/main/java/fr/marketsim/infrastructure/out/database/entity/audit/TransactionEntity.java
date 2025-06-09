@@ -1,8 +1,8 @@
-package fr.marketsim.infrastructure.out.entity.audit;
+package fr.marketsim.infrastructure.out.database.entity.audit;
 
-import fr.marketsim.infrastructure.out.entity.asset.AssetEntity;
-import fr.marketsim.infrastructure.out.entity.portfolio.PortfolioEntity;
-import fr.marketsim.infrastructure.out.entity.user.UserEntity;
+import fr.marketsim.infrastructure.out.database.entity.asset.AssetEntity;
+import fr.marketsim.infrastructure.out.database.entity.portfolio.PortfolioEntity;
+import fr.marketsim.infrastructure.out.database.entity.user.UserEntity;
 import fr.marketsim.domain.model.OrderType;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -12,7 +12,7 @@ import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.UUID;
 
-import static fr.marketsim.application.util.ApplicationConstants.*;
+import static fr.marketsim.application.utilities.ApplicationConstants.*;
 
 @Entity
 @Table(name = "transactions")
