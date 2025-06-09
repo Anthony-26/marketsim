@@ -1,7 +1,7 @@
-package fr.marketsim.infrastructure.out.entity.portfolio;
+package fr.marketsim.infrastructure.out.database.entity.portfolio;
 
-import fr.marketsim.infrastructure.out.entity.audit.AuditableEntity;
-import fr.marketsim.infrastructure.out.entity.user.UserEntity;
+import fr.marketsim.infrastructure.out.database.entity.audit.AuditableEntity;
+import fr.marketsim.infrastructure.out.database.entity.user.UserEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;

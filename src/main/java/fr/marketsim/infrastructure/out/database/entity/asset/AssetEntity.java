@@ -1,8 +1,8 @@
-package fr.marketsim.infrastructure.out.entity.asset;
+package fr.marketsim.infrastructure.out.database.entity.asset;
 
-import fr.marketsim.infrastructure.out.entity.audit.AuditableEntity;
-import fr.marketsim.infrastructure.out.entity.price.CurrentPriceEntity;
-import fr.marketsim.infrastructure.out.entity.price.AssetPriceHistoryEntity;
+import fr.marketsim.infrastructure.out.database.entity.audit.AuditableEntity;
+import fr.marketsim.infrastructure.out.database.entity.price.CurrentPriceEntity;
+import fr.marketsim.infrastructure.out.database.entity.price.AssetPriceHistoryEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;

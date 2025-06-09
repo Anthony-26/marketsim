@@ -1,4 +1,4 @@
-package fr.marketsim.infrastructure.out.entity.asset;
+package fr.marketsim.infrastructure.out.database.entity.asset;
 
 import fr.marketsim.domain.model.Sector;
 import jakarta.persistence.*;
@@ -8,8 +8,8 @@ import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 
-import static fr.marketsim.application.util.ApplicationConstants.PRICE_PRECISION;
-import static fr.marketsim.application.util.ApplicationConstants.PRICE_SCALE;
+import static fr.marketsim.application.utilities.ApplicationConstants.PRICE_PRECISION;
+import static fr.marketsim.application.utilities.ApplicationConstants.PRICE_SCALE;
 
 @Entity
 @Table(name = "stocks")

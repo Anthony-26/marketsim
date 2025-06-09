@@ -1,7 +1,7 @@
-package fr.marketsim.infrastructure.out.entity.portfolio;
+package fr.marketsim.infrastructure.out.database.entity.portfolio;
 
-import fr.marketsim.infrastructure.out.entity.asset.AssetEntity;
-import fr.marketsim.infrastructure.out.entity.audit.AuditableEntity;
+import fr.marketsim.infrastructure.out.database.entity.asset.AssetEntity;
+import fr.marketsim.infrastructure.out.database.entity.audit.AuditableEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 import java.math.BigDecimal;
 import java.util.UUID;
 
-import static fr.marketsim.application.util.ApplicationConstants.*;
+import static fr.marketsim.application.utilities.ApplicationConstants.*;
 
 @Entity
 @Table(name = "positions", uniqueConstraints = @UniqueConstraint(columnNames = {"portfolio_id", "asset_id"}))

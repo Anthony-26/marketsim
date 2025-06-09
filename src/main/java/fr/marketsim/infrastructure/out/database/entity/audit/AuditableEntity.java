@@ -1,4 +1,4 @@
-package fr.marketsim.infrastructure.out.entity.audit;
+package fr.marketsim.infrastructure.out.database.entity.audit;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;

@@ -1,6 +1,6 @@
-package fr.marketsim.infrastructure.out.entity.price;
+package fr.marketsim.infrastructure.out.database.entity.price;
 
-import fr.marketsim.infrastructure.out.entity.asset.AssetEntity;
+import fr.marketsim.infrastructure.out.database.entity.asset.AssetEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 import java.math.BigDecimal;
 import java.time.Instant;
 
-import static fr.marketsim.application.util.ApplicationConstants.PRICE_PRECISION;
+import static fr.marketsim.application.utilities.ApplicationConstants.PRICE_PRECISION;
 
 @Entity
 @Table(name = "current_prices")
