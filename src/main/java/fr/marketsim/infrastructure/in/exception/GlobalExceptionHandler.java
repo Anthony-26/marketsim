@@ -2,6 +2,7 @@ package fr.marketsim.infrastructure.in.exception;
 
 import fr.marketsim.application.service.mapper.ExceptionHttpMapper;
 import fr.marketsim.domain.exception.business.BusinessException;
+import fr.marketsim.infrastructure.in.dto.ApiErrorResponseDto;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,7 +21,7 @@ public class GlobalExceptionHandler {
     private final ExceptionHttpMapper exceptionMapperService;
 
     @ExceptionHandler(BusinessException.class)
-    public ResponseEntity<ErrorResponse> handleBusinessException(
+    public ResponseEntity<ApiErrorResponseDto> handleBusinessException(
             BusinessException ex, HttpServletRequest request) {
 
         String businessCode = ex.getBusinessCode();
@@ -29,15 +30,7 @@ public class GlobalExceptionHandler {
 
         log.warn("TraceId : {} - Business exception occured. Message '{}', Business Code '{}' and HttpStatusCode '{}'",
                 traceId, ex.getMessage(), businessCode, httpStatusCode);
-        return ResponseEntity.status(httpStatusCode).body(
-                ErrorResponse.builder()
-                        .httpStatusCode(httpStatusCode)
-                        .businessCode(ex.getBusinessCode())
-                        .message(ex.getMessage())
-                        .path(request.getRequestURI())
-                        .traceId(traceId)
-                        .build()
-        );
+        return ResponseEntity.status(httpStatusCode).body(null);
 
     }
 
