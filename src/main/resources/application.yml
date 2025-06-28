@@ -10,12 +10,6 @@ spring:
         jdbc:
           time_zone: UTC
 
-#app:
-#  jwt:
-#    secret: ${JWT_SECRET}
-#    expiration-ms: ${JWT_EXPIRATION:900000}
-#    issuer: ${APPLICATION_NAME:marketsim}
-
 app:
   jwt:
     secret: ${JWT_SECRET}
