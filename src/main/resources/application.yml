@@ -10,12 +10,6 @@ spring:
         jdbc:
           time_zone: UTC
 
-#app:
-#  jwt:
-#    secret: ${JWT_SECRET:Vm9pY2lVblNlY3JldEJlYXVjb3VwUGx1c0xvbmdFdFNlY3VyaXNlUG91ckpXVEF1dGhlbnRpZmljYXRpb25BdmVjSE1BQ1NIQTI1NkJpdHNNaW5pbXVt}
-#    expiration-ms: ${JWT_EXPIRATION:900000}
-#    issuer: ${APPLICATION_NAME:marketsim}
-
 app:
   jwt:
     secret: ${JWT_SECRET:Vm9pY2lVblNlY3JldEJlYXVjb3VwUGx1c0xvbmdFdFNlY3VyaXNlUG91ckpXVEF1dGhlbnRpZmljYXRpb25BdmVjSE1BQ1NIQTI1NkJpdHNNaW5pbXVt}
