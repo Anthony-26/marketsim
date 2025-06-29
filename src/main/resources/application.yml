@@ -2,7 +2,7 @@ spring:
   application:
     name: marketsim
   profiles:
-    active: test
+    active: dev
   jpa:
     properties:
       jakarta.persistence.validation.mode: AUTO
@@ -12,6 +12,6 @@ spring:
 
 app:
   jwt:
-    secret: ${JWT_SECRET:Vm9pY2lVblNlY3JldEJlYXVjb3VwUGx1c0xvbmdFdFNlY3VyaXNlUG91ckpXVEF1dGhlbnRpZmljYXRpb25BdmVjSE1BQ1NIQTI1NkJpdHNNaW5pbXVt}
+    secret: ${JWT_SECRET}
     expiration-ms: ${JWT_EXPIRATION:900000}
     issuer: marketsim
