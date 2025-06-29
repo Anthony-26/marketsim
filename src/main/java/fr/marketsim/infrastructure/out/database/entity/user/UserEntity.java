@@ -30,7 +30,7 @@ public class UserEntity extends AuditableEntity {
     @NotBlank(message = "Email required")
     private String email;
 
-    @Column(name = "password_hash", nullable = false, length = 40)
+    @Column(name = "password_hash", nullable = false)
     @NotBlank(message = "Password required")
     private String passwordHash;
 
@@ -39,7 +39,7 @@ public class UserEntity extends AuditableEntity {
     private Role role;
 
     @Setter
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private AccountEntity account;
 
 }
