@@ -26,8 +26,12 @@ public class GlobalExceptionHandler {
         String businessCode = ex.getBusinessCode();
         int httpStatusCode = exceptionMapperService.getHttpStatusFromBusinessCode(businessCode).value();
 
-        log.warn("Business exception occured. Message '{}', Business Code '{}' and HttpStatusCode '{}'", ex.getMessage(), businessCode, httpStatusCode);
-        return ResponseEntity.status(httpStatusCode).body(null);
+        log.warn(
+                "Business exception occured. Message '{}', Business Code '{}' and HttpStatusCode '{}'",
+                ex.getMessage(), businessCode, httpStatusCode
+        );
+        return ResponseEntity.status(httpStatusCode)
+                .body(ApiErrorResponseDto.of(httpStatusCode, businessCode, request.getRequestURI()));
 
     }
 

@@ -65,7 +65,7 @@ public class DefaultUserOrchestrator implements UserOrchestrator {
     }
 
     private String cleanEmail(String email) {
-        return email.trim().toLowerCase();
+        return email.trim().toLowerCase().replaceAll("[\\r\\n]", "");
     }
 
 }
