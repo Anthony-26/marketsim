@@ -1,5 +1,6 @@
 package fr.marketsim.infrastructure.out.database.entity.user;
 
+import fr.marketsim.infrastructure.out.database.entity.audit.AuditableEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -15,7 +16,7 @@ import static fr.marketsim.application.utilities.ApplicationConstants.PRICE_SCAL
 @Builder(access = AccessLevel.PUBLIC)
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-public class AccountEntity {
+public class AccountEntity extends AuditableEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "account_seq")

@@ -7,11 +7,10 @@ import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.MDC;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-
-import static fr.marketsim.application.utilities.ApplicationConstants.TRACE_ID_KEY;
 
 @RestControllerAdvice
 @RequiredArgsConstructor
@@ -23,15 +22,20 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(BusinessException.class)
     public ResponseEntity<ApiErrorResponseDto> handleBusinessException(
             BusinessException ex, HttpServletRequest request) {
-
         String businessCode = ex.getBusinessCode();
         int httpStatusCode = exceptionMapperService.getHttpStatusFromBusinessCode(businessCode).value();
-        String traceId = MDC.get(TRACE_ID_KEY);
 
-        log.warn("TraceId : {} - Business exception occured. Message '{}', Business Code '{}' and HttpStatusCode '{}'",
-                traceId, ex.getMessage(), businessCode, httpStatusCode);
-        return ResponseEntity.status(httpStatusCode).body(null);
+        log.warn(
+                "Business exception occured. Message '{}', Business Code '{}' and HttpStatusCode '{}'",
+                ex.getMessage(), businessCode, httpStatusCode
+        );
+        return ResponseEntity.status(httpStatusCode)
+                .body(ApiErrorResponseDto.of(httpStatusCode, businessCode, request.getRequestURI()));
+    }
 
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<String> handleException() {
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Internal Server Error.");
     }
 
 }

@@ -1,6 +1,7 @@
 package fr.marketsim.application.config;
 
 import fr.marketsim.application.port.out.UserPersistencePort;
+import fr.marketsim.application.security.JwtTokenManager;
 import fr.marketsim.application.service.utilities.UuidGenerator;
 import fr.marketsim.application.service.workflow.DefaultUserOrchestrator;
 import fr.marketsim.application.port.in.UserOrchestrator;
@@ -14,8 +15,9 @@ public class WorkflowConfiguration {
     @Bean
     public UserOrchestrator userOrchestratorService(UserPersistencePort userPersistencePort,
                                                     UuidGenerator uuidGenerator,
-                                                    PasswordEncoder passwordEncoder) {
-        return new DefaultUserOrchestrator(userPersistencePort, uuidGenerator, passwordEncoder);
+                                                    PasswordEncoder passwordEncoder,
+                                                    JwtTokenManager jwtTokenManager) {
+        return new DefaultUserOrchestrator(userPersistencePort, uuidGenerator, passwordEncoder, jwtTokenManager);
     }
 
 }

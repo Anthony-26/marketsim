@@ -33,9 +33,9 @@ public class AuthController {
     public ResponseEntity<LoginResponseDto> loginUser(
             @RequestBody @Valid UserRequestDto userRequestDto
     ) {
-        userOrchestrator.loginUser(userRequestDto);
+        LoginResponseDto loginResponseDto = userOrchestrator.loginUser(userRequestDto);
         return ResponseEntity.status(HttpStatus.OK)
-                .body(LoginResponseDto.of("Login successful"));
+                .body(loginResponseDto);
     }
 
 }

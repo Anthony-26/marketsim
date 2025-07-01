@@ -14,13 +14,4 @@ public class AccountMapper {
                 .build();
     }
 
-    public AccountEntity toEntity(Account domain, User user) {
-        return AccountEntity.builder()
-                .id(domain.getId())
-                .publicId(domain.getPublicId())
-                .balance(domain.getBalance())
-                .user(null)
-                .build();
-    }
-
 }
