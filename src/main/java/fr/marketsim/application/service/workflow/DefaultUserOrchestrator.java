@@ -2,11 +2,13 @@ package fr.marketsim.application.service.workflow;
 
 import fr.marketsim.application.port.in.UserOrchestrator;
 import fr.marketsim.application.port.out.UserPersistencePort;
+import fr.marketsim.application.security.JwtTokenManager;
 import fr.marketsim.application.service.utilities.UuidGenerator;
 import fr.marketsim.domain.exception.business.EmailAlreadyExistsException;
 import fr.marketsim.domain.exception.business.EmailDoesNotExistException;
 import fr.marketsim.domain.exception.business.InvalidCredentialsException;
 import fr.marketsim.domain.model.User;
+import fr.marketsim.infrastructure.in.dto.LoginResponseDto;
 import fr.marketsim.infrastructure.in.dto.RegisterResponseDto;
 import fr.marketsim.infrastructure.in.dto.UserRequestDto;
 import jakarta.validation.Valid;
@@ -27,6 +29,7 @@ public class DefaultUserOrchestrator implements UserOrchestrator {
     private final UserPersistencePort userPersistencePort;
     private final UuidGenerator randomUuidGenerator;
     private final PasswordEncoder passwordEncoder;
+    private final JwtTokenManager jwtTokenManager;
 
     @Override
     @Transactional
@@ -44,20 +47,21 @@ public class DefaultUserOrchestrator implements UserOrchestrator {
         userPersistencePort.save(user);
         log.info("Registered user '{}'.", user.getEmail());
 
-        return RegisterResponseDto.of("");
+        return RegisterResponseDto.of(jwtTokenManager.generateToken(user));
     }
 
     @Override
     @Transactional(readOnly = true)
-    public void loginUser(UserRequestDto userRequestDto) {
+    public LoginResponseDto loginUser(UserRequestDto userRequestDto) {
         String email = cleanEmail(userRequestDto.getEmail());
         log.info("Authentication attempt for email '{}'.", email);
 
         User user = userPersistencePort.findByEmail(email).orElseThrow(EmailDoesNotExistException::new);
 
-        if(!passwordEncoder.matches(user.getPasswordHash(), userRequestDto.getPassword()))
+        if (!passwordEncoder.matches(userRequestDto.getPassword(), user.getPasswordHash()))
             throw new InvalidCredentialsException();
 
+        return LoginResponseDto.of(jwtTokenManager.generateToken(user));
     }
 
     private String cleanEmail(String email) {
