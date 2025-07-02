@@ -11,12 +11,22 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.H2Dialect
     show-sql: true
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
   flyway:
     enabled: false
+
+app:
+  jwt:
+    secret: "BtBoVc+E9hA4IVcbtSjOrRTiaZ3jEiDhE16g67drjueFy2ecIO1Gu3ATH3rsNCpcD8z8XXaOh8jwp6zV2JLN7BAg2LVV9UEtlKYQ0rTxy09AaEaZpaRrl35GA34zt4LFLl5K9pKmOngqfjP8p84WaXz6g4kJ/hgl23irMwL4p2w="
+    expiration-ms: 900000
+    issuer: marketsim
 
 logging:
   level:
     root: INFO
-    org.springframework: INFO
-    org.hibernate.SQL: DEBUG
+#    org.springframework: INFO
+#    org.hibernate.SQL: INFO
     fr.marketsim: DEBUG
