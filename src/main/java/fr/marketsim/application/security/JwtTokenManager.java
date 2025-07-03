@@ -7,10 +7,8 @@ public interface JwtTokenManager {
 
     String generateToken(User user);
 
-    boolean validateToken(String token, User user);
+    boolean validateToken(String token);
 
     String extractSubject(String token);
-
-    Role extractRole(String token);
 
 }
