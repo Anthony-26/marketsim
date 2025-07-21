@@ -17,7 +17,7 @@
 
     <properties>
         <java.version>21</java.version>
-        <spring.boot.security.version>6.5.1</spring.boot.security.version>
+        <spring.boot.security.version>6.5.2</spring.boot.security.version>
         <jacoco.version>0.8.13</jacoco.version>
         <mockito.version>5.18.0</mockito.version>
         <org.assertj.core.version>3.27.3</org.assertj.core.version>
